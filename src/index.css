@@ -1,0 +1,98 @@
+/* import fonts */
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+
+/* tailwind css init */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* declaring color variables */
+:root {
+  --primary: #333;
+  --secondary: #f1f1f1;
+}
+
+/* body styling */
+body {
+  background-color: var(--secondary);
+  color: var(--primary);
+  font-family: "Inter", sans-serif;
+}
+
+/* add smooth scrolling */
+html{
+  scroll-behavior: smooth;
+}
+
+/* utility styling */
+.slogan-container{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/banner/banner-4.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+/* container */
+.container-special{
+  max-width: 100rem;
+  margin: 0 auto;
+}
+
+.slogan{
+  background-image: url(/banner/banner-1.jpg);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.question{
+  clip-path: polygon(2% 0%, 100% 0%, 98% 100%, 0% 100%);
+}
+
+li > a{
+  position: relative;
+  overflow: hidden !important;
+  z-index: 10;
+  transition: all 0.3s ease-in-out;
+  display: block;
+}
+
+li > a:hover{
+  color: black;
+}
+
+li > a:hover::after{
+  top: -15% !important;
+}
+
+li > a::after{
+  content: '';
+  display: block;
+  width: 120%;
+  transform: translateX(-10%);
+  height: 35px;
+  background-color: white;
+  position: absolute;
+  top: 100%;
+  transition: all 0.3s ease-in-out;
+  z-index: -10;
+  border-radius: 0.4rem;
+}
+
+svg > line{
+  stroke-dashoffset: 2000;
+  stroke-dasharray: 20;
+  animation: animate 15s linear infinite ;
+}
+
+@keyframes animate {
+  to{
+    stroke-dashoffset: 0;
+  }
+  
+}
+
+@layer components{
+  .btn{
+    @apply bg-black text-gray-200 px-6 py-2 rounded-md cursor-pointer border border-black transition duration-500 hover:bg-transparent hover:text-black
+  }
+}
