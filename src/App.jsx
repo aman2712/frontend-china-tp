@@ -7,12 +7,14 @@ import Food from "./components/food";
 import People from "./components/people";
 import Help from "./components/help";
 import Footer from "./components/footer";
+import BannerTwo from "./components/banner2";
 
 function App() {
   return (
     <main className="container-special">
       <Navbar />
-      <Banner />
+      {/* <Banner /> */}
+      <BannerTwo />
       <Slogan />
       <Events />
       <History />

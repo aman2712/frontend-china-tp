@@ -10,12 +10,11 @@ export default function Events() {
       <h1 className="sm:text-5xl text-3xl font-lato mt-2 font-extrabold">
         Enjoy A Wide Array of <span className="text-blue-400">Events!</span>
       </h1>
-      <ZoomAnimation>
-        <div className="grid sm:grid-cols-4 grid-cols-1 px-5 gap-4">
-          {eventsInfo.map((event, index) => (
+      <div className="grid sm:grid-cols-4 grid-cols-1 px-5 gap-4">
+        {eventsInfo.map((event, index) => (
+          <ZoomAnimation key={index} id={`event-card-${index}`}>
             <div
               className="mt-12 rounded overflow-hidden group cursor-pointer"
-              key={index}
             >
               <div className="sm:h-52 overflow-hidden">
                 <img
@@ -40,13 +39,13 @@ export default function Events() {
                   <h4 className="font-lato font-semibold text-xl text-gray-700">
                     {event.price}$
                   </h4>
-                  <button className="btn">Join Now</button>
+                  <button className="btn border-blue-400 hover:text-blue-400 bg-blue-400">Join Now</button>
                 </div>
               </div>
             </div>
-          ))}
-        </div>
-      </ZoomAnimation>
+          </ZoomAnimation>
+        ))}
+      </div>
     </section>
   );
 }

@@ -20,79 +20,91 @@ body {
 }
 
 /* add smooth scrolling */
-html{
+html {
   scroll-behavior: smooth;
 }
 
 /* utility styling */
-.slogan-container{
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/banner/banner-4.jpg);
+.slogan-container {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url(/banner/banner-4.jpg);
   background-position: center;
   background-size: cover;
 }
 
 /* container */
-.container-special{
+.container-special {
   max-width: 100rem;
   margin: 0 auto;
 }
 
-.slogan{
+.slogan {
   background-image: url(/banner/banner-1.jpg);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
 }
 
-.question{
+.question {
   clip-path: polygon(2% 0%, 100% 0%, 98% 100%, 0% 100%);
 }
 
-li > a{
+li{
   position: relative;
-  overflow: hidden !important;
-  z-index: 10;
+  overflow: hidden;
+  height: 1.7rem;
   transition: all 0.3s ease-in-out;
+}
+
+li > a{
   display: block;
+  transition: all 0.3s ease-in-out;
+  transform: translateY(100%);
 }
 
-li > a:hover{
-  color: black;
-}
-
-li > a:hover::after{
-  top: -15% !important;
-}
-
-li > a::after{
-  content: '';
-  display: block;
-  width: 120%;
-  transform: translateX(-10%);
-  height: 35px;
-  background-color: white;
+li::before{
+  content: attr(data-replace);
   position: absolute;
-  top: 100%;
+  left: 0;
+  top: 0%;
   transition: all 0.3s ease-in-out;
-  z-index: -10;
-  border-radius: 0.4rem;
+  cursor: pointer;
 }
 
-svg > line{
+li:hover > a{
+  transform: translateY(0%);
+}
+
+li:hover::before{
+  top: -100%;
+}
+
+svg > line {
   stroke-dashoffset: 2000;
-  stroke-dasharray: 20;
-  animation: animate 15s linear infinite ;
+  stroke-dasharray: 10;
+  animation: animate 20s linear infinite;
+}
+
+#event-card-1 {
+  transition-delay: 200ms;
+}
+
+#event-card-2 {
+  transition-delay: 400ms;
+}
+
+#event-card-3 {
+  transition-delay: 600ms;
 }
 
 @keyframes animate {
-  to{
+  to {
     stroke-dashoffset: 0;
   }
-  
 }
 
-@layer components{
-  .btn{
-    @apply bg-black text-gray-200 px-6 py-2 rounded-md cursor-pointer border border-black transition duration-500 hover:bg-transparent hover:text-black
+@layer components {
+  .btn {
+    @apply bg-orange-400 text-gray-100 px-6 py-2 rounded-md cursor-pointer border border-orange-400 transition duration-500 hover:bg-transparent hover:text-orange-500;
   }
 }

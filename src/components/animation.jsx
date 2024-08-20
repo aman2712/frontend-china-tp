@@ -13,15 +13,16 @@ export const ScaleAnimation = ({ children }) => {
   );
 };
 
-export const ZoomAnimation = ({ children }) => {
-  const [zoomVisible, zoomRef] = useAnimation();
+export const ZoomAnimation = (props) => {
+  const [zoomVisible, zoomRef] = useAnimation();  
 
   return (
     <div
       className={`${classes.zoom} ${zoomVisible ? classes.visible : ""}`}
       ref={zoomRef}
+      id={props.id}
     >
-      {children}
+      {props.children}
     </div>
   );
 };

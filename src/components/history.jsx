@@ -1,8 +1,26 @@
+import { useEffect, useState } from "react";
 import { ZoomAnimation } from "./animation";
 
 export default function History() {
+  const [height, setHeight] = useState(0)
+
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      const value = ((document.documentElement.scrollTop - 1500) / 902) * 902
+      if(value > 902){
+        setHeight(902)
+      }else if(value < 0) {
+        setHeight(0)
+      }else{
+        setHeight(value)
+      }
+    })
+
+    return () => window.removeEventListener('scroll', () => {})
+  }, [])
+
   return (
-    <section className="sm:px-16 px-4 mb-20 relative sm:h-[1200px] h-auto sm:block flex flex-col items-center">
+    <section className="sm:px-16 px-4 sm:mb-40 mb-20 relative h-auto sm:block flex flex-col items-center overflow-hidden" style={{height: `${height+300}px`}}>
       <p className="flex tracking-widest sm:text-xl text-lg items-center gap-2 font-bold justify-center">
         HISTORY <span className="w-24 h-1 bg-yellow-400 rounded-sm"></span>
       </p>
@@ -10,7 +28,7 @@ export default function History() {
         Take a look at our <span className="text-yellow-500">History!</span>
       </h1>
       <svg
-        height={902}
+        height={height}
         width={500}
         className="mx-auto mt-16 absolute top-20 left-1/2 -translate-x-1/2 sm:block hidden"
       >
@@ -60,7 +78,7 @@ export default function History() {
           x2={0}
           y2={900}
           stroke="black"
-          strokeWidth={2}
+          strokeWidth={3}
         />
         <circle r="5" cx="250" cy="5" fill="black" />
       </svg>
